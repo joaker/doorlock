@@ -1,0 +1,19 @@
+{
+  "name": "doorlock",
+  "version": "1.0.0",
+  "description": "zombieland: doorlock",
+  "main": "doorlock.js",
+  "scripts": {
+    "start": "http-server ./src/js/",
+    "test": "yarn test"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "eslint-plugin-react": "^7.20.0"
+  },
+  "dependencies": {
+    "http-server": "^0.12.3"
+  }
+}

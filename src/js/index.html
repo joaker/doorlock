@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <script src="./doorlock.js" charset="utf-8"></script>
+    <script src="./console.js" charset="utf-8"></script>
+  </head>
+  <body>
+    hey, john
+    <div id="console">
+      <form onsubmit="return false">
+        <input type="text" />
+        <button type="submit">enter</button>
+      </form>
+      <ul class="log">
+        <li>sample log</li>
+      </ul>
+    </div>
+    <script>
+      installConsole("#console", function onEnter() {
+        const input = getInput();
+        const value = input.value;
+        if (value) logToTop(value);
+      });
+    </script>
+  </body>
+</html>
