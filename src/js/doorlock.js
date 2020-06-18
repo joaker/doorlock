@@ -1,4 +1,4 @@
-function print(...params) {
+export function print(...params) {
   throw new Error(
     [
       "not implemented exception.",
@@ -8,13 +8,13 @@ function print(...params) {
   );
 }
 
-function getInput() {
+export function getInput() {
   throw new Error("not implemented");
   return 42;
 }
 
 // PrintIntro
-function printIntro() {
+export function printIntro() {
   const intro = [
     "---------------------------------------------------------------------------",
     "|       ________   _______  _________   ______   ___  _____    __         |",
@@ -35,13 +35,13 @@ function printIntro() {
 }
 
 // PrintGuesses
-function printGuesses(guesses) {
+export function printGuesses(guesses) {
   const guessUpdate = ["", `You have ${guesses} guesses left!`, ""];
   print(guessUpdate);
 }
 
 // NumberGenerator
-function generateNumber(randomNumberSetter) {
+export function generateNumber(randomNumberSetter) {
   const lockCodeA = (Math.random() % randomNumberSetter) + randomNumberSetter; //makes random number 1-9, varible Difficulty comes from main
   const lockCodeB = (Math.random() % randomNumberSetter) + randomNumberSetter; //makes random number 1-9, varible Difficulty comes from main
   const lockCodeC = (Math.random() % randomNumberSetter) + randomNumberSetter; //makes random number 1-9, varible Difficulty comes from main
@@ -54,7 +54,7 @@ function generateNumber(randomNumberSetter) {
 }
 
 // HintGeneratorSum
-function createSumHint(lockCode) {
+export function createSumHint(lockCode) {
   const lockCodeString = `${lockCode}`;
   const a1 = lockCodeString.substr(0, 1);
   const a2 = lockCodeString.substr(1, 1);
@@ -66,7 +66,7 @@ function createSumHint(lockCode) {
   return sumHint;
 }
 // HintGeneratorProduct
-function createProductHint(lockCode) {
+export function createProductHint(lockCode) {
   const lockCodeString2 = `${lockCode}`;
   const p1 = lockCodeString2.substr(0, 1);
   const p2 = lockCodeString2.substr(1, 1);
@@ -84,19 +84,21 @@ function playGame(guesses, randomNumberSetter, sum, product) {
 
   const lockRiddle = [
     "\n",
-    "+ There are three numbers in the lock code!\n",
-    ("+ The codes add up to: " << Sum) << "\n",
-    ("+ The codes multiply to: " << Product) << "\n"
+    "+ There are three numbers in the lock code!",
+    "",
+    `+ The codes add up to: ${sum}`,
+    `+ The codes multiply to: ${product}`,
+    ""
   ];
   print(...lockRiddle);
 
   let playerGuess;
 
-  const guessPrompt = ["\n", "+ Enter a three digit guess!\n"];
+  const guessPrompt = ["", "+ Enter a three digit guess!", ""];
   print(...guessPrompt);
 
   playerGuess = getInput(); // TODO - make this async and await response
-  const guessFeedback = [`+ You entered: ${playerGuess}`, "\n"];
+  const guessFeedback = [`+ You entered: ${playerGuess}`, ""];
   print(...guessFeedback);
 
   const breakGuess = `${playerGuess}`;
