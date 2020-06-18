@@ -10,7 +10,6 @@ export function print(...params) {
 
 export function getInput() {
   throw new Error("not implemented");
-  return 42;
 }
 
 // PrintIntro
@@ -54,7 +53,7 @@ export function generateNumber(randomNumberSetter) {
 }
 
 // HintGeneratorSum
-export function createSumHint(lockCode) {
+export function generateSumHint(lockCode) {
   const lockCodeString = `${lockCode}`;
   const a1 = lockCodeString.substr(0, 1);
   const a2 = lockCodeString.substr(1, 1);
@@ -66,7 +65,7 @@ export function createSumHint(lockCode) {
   return sumHint;
 }
 // HintGeneratorProduct
-export function createProductHint(lockCode) {
+export function generateProductHint(lockCode) {
   const lockCodeString2 = `${lockCode}`;
   const p1 = lockCodeString2.substr(0, 1);
   const p2 = lockCodeString2.substr(1, 1);
@@ -83,11 +82,11 @@ function playGame(guesses, randomNumberSetter, sum, product) {
   printGuesses(guesses);
 
   const lockRiddle = [
-    "\n",
-    "+ There are three numbers in the lock code!",
     "",
-    `+ The codes add up to: ${sum}`,
-    `+ The codes multiply to: ${product}`,
+    " There are three numbers in the lock code!",
+    "",
+    ` The codes add up to: ${sum}`,
+    ` The codes multiply to: ${product}`,
     ""
   ];
   print(...lockRiddle);
@@ -129,5 +128,50 @@ function playGame(guesses, randomNumberSetter, sum, product) {
   } else {
     print("Wrong Guess, the Zombies are getting closer!\n");
     return false;
+  }
+}
+
+function main() {
+  const randomNumberSetter = 3;
+
+  let startGuesses = 5;
+  let lockCode;
+  let sum;
+  let product;
+
+  // TODO - port this line
+  // srand(time(NULL)); //create new random sequence based on the time of day
+
+  printIntro();
+  lockCode = generateNumber(randomNumberSetter);
+  sum = generateSumHint(lockCode);
+  product = generateProductHint(lockCode);
+
+  while (startGuesses != 0) {
+    const bLevelComplete = playGame(
+      startGuesses,
+      randomNumberSetter,
+      sum,
+      product
+    );
+
+    // TODO port these lines
+    // cin.clear(); //clears any errors
+    // cin.ignore(); //discards the buffer
+
+    if (bLevelComplete == false) {
+      startGuesses = startGuesses - 1;
+    }
+
+    if (bLevelComplete == true) {
+      return 0;
+    }
+
+    const failMessage = [
+      "The Zombies have ripped your head off, you are Dead!",
+      ""
+    ];
+    print(...failMessage);
+    return 0;
   }
 }
