@@ -15,11 +15,12 @@
       </ul>
     </div>
     <script>
+      let inputValue = null;
       installConsole("#console", function onEnter() {
-        const input = getInput();
-        const value = input.value;
-        if (value) logToTop(value);
+        const inputValue = getInput().value;
       });
+
+      main(); // kick off console.js's "main" function
     </script>
   </body>
 </html>

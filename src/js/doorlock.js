@@ -1,17 +1,17 @@
-export function print(...params) {
+function print(...params) {
   for (let message of params) {
     // references a method exposed by console.js
     logToTop(message); // eslint-disable-line
   }
 }
 
-export function getInputValue() {
+function getInputValue() {
   // references a method exposed by console.js
   const value = getInput().value; // eslint-disable-line
 }
 
 // PrintIntro
-export function printIntro() {
+function printIntro() {
   const intro = [
     "---------------------------------------------------------------------------",
     "|       ________   _______  _________   ______   ___  _____    __         |",
@@ -32,13 +32,13 @@ export function printIntro() {
 }
 
 // PrintGuesses
-export function printGuesses(guesses) {
+function printGuesses(guesses) {
   const guessUpdate = ["", `You have ${guesses} guesses left!`, ""];
   print(guessUpdate);
 }
 
 // NumberGenerator
-export function generateNumber(randomNumberSetter) {
+function generateNumber(randomNumberSetter) {
   const lockCodeA = (Math.random() % randomNumberSetter) + randomNumberSetter; //makes random number 1-9, varible Difficulty comes from main
   const lockCodeB = (Math.random() % randomNumberSetter) + randomNumberSetter; //makes random number 1-9, varible Difficulty comes from main
   const lockCodeC = (Math.random() % randomNumberSetter) + randomNumberSetter; //makes random number 1-9, varible Difficulty comes from main
@@ -51,7 +51,7 @@ export function generateNumber(randomNumberSetter) {
 }
 
 // HintGeneratorSum
-export function generateSumHint(lockCode) {
+function generateSumHint(lockCode) {
   const lockCodeString = `${lockCode}`;
   const a1 = lockCodeString.substr(0, 1);
   const a2 = lockCodeString.substr(1, 1);
@@ -63,7 +63,7 @@ export function generateSumHint(lockCode) {
   return sumHint;
 }
 // HintGeneratorProduct
-export function generateProductHint(lockCode) {
+function generateProductHint(lockCode) {
   const lockCodeString2 = `${lockCode}`;
   const p1 = lockCodeString2.substr(0, 1);
   const p2 = lockCodeString2.substr(1, 1);
@@ -128,6 +128,8 @@ function playGame(guesses, randomNumberSetter, sum, product) {
     return false;
   }
 }
+
+console.log("hey, i am executing");
 
 function main() {
   const randomNumberSetter = 3;

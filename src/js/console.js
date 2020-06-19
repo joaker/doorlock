@@ -46,7 +46,6 @@ function getButton() {
 
 function installConsole(_consoleSelector, onEnter) {
   consoleSelector = _consoleSelector;
-  const log = getLog();
   const input = getInput();
   const button = getButton();
 
