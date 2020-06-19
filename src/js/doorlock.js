@@ -1,15 +1,13 @@
 export function print(...params) {
-  throw new Error(
-    [
-      "not implemented exception.",
-      "TODO:",
-      `  params ${params} needs to be printed somewhere`
-    ].join("\n")
-  );
+  for (let message of params) {
+    // references a method exposed by console.js
+    logToTop(message); // eslint-disable-line
+  }
 }
 
-export function getInput() {
-  throw new Error("not implemented");
+export function getInputValue() {
+  // references a method exposed by console.js
+  const value = getInput().value; // eslint-disable-line
 }
 
 // PrintIntro
@@ -96,7 +94,7 @@ function playGame(guesses, randomNumberSetter, sum, product) {
   const guessPrompt = ["", "+ Enter a three digit guess!", ""];
   print(...guessPrompt);
 
-  playerGuess = getInput(); // TODO - make this async and await response
+  playerGuess = getInputValue(); // TODO - make this async and await response
   const guessFeedback = [`+ You entered: ${playerGuess}`, ""];
   print(...guessFeedback);
 
