@@ -1,4 +1,5 @@
-function logToTop(message) {
+function logToTop(raw) {
+  const message = raw.replace(/\s/g, "\u00A0");
   const newItem = document.createElement("LI");
   newItem.appendChild(document.createTextNode(message));
 
