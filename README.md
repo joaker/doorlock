@@ -26,3 +26,7 @@ $ yarn start
 
 2. Then open this url in a browser:
    http://localhost:8080/
+
+## caveat
+
+this repository is a work in progress and the output of the application has not reached parity with the cpp version of the game
